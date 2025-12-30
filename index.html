@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Medha ❤️</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+background:#0b132b;
+font-family:Georgia,serif;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+}
+
+.envelope{
+width:200px;
+height:120px;
+background:#f1f1f1;
+border-radius:6px;
+cursor:pointer;
+position:relative;
+}
+.envelope:before{
+content:"";
+position:absolute;
+top:-60px;
+left:0;
+border-left:100px solid transparent;
+border-right:100px solid transparent;
+border-bottom:60px solid #ddd;
+}
+
+#content{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.9);
+padding:15px;
+overflow:auto;
+}
+.box{
+background:white;
+color:black;
+border-radius:10px;
+padding:15px;
+margin-bottom:15px;
+}
+img{
+width:100%;
+border-radius:10px;
+}
+
+.heart{
+position:fixed;
+color:pink;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+@keyframes fall{
+0%{top:-10%;opacity:1;}
+100%{top:110%;opacity:0;}
+}
+
+.close{
+color:white;
+font-size:20px;
+text-align:right;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()"></div>
+
+<div id="content">
+<div class="close" onclick="closeLetter()">✖</div>
+
+<div class="box">
+<h3 style="text-align:center;color:#c0392b;">
+Happy New Year Medha ♥️🎈
+</h3>
+<p id="text"></p>
+</div>
+
+<img src="photo.jpg">
+
+<audio id="music" loop>
+<source src="music.mp3">
+</audio>
+
+</div>
+
+<script>
+const msg = `This year was crazy atleast for me I confessed something I was waiting for since last one.
+It didn't turned out as I wanted but it meant something deeper.
+
+I will remember everything everyday every time I have spent with you subtly.....
+and I'll always be with you no matter what people say and whatever
+but you matter to me more than their words.
+
+I'm not gonna leave you. If I leave you how can I see you becoming CFA man...
+
+Be like this always by heart and I will be wishing you a happy new year
+for the rest of my life every year this bond will deepens and at last
+you was and always will be my favourite notification
+and my bestest friend ❤️‍🩹❤️‍🩹`;
+
+let i=0;
+function type(){
+if(i<msg.length){
+document.getElementById("text").innerHTML+=msg.charAt(i);
+i++;
+setTimeout(type,40);
+}
+}
+
+function openLetter(){
+document.getElementById("content").style.display="block";
+document.getElementById("music").play();
+type();
+hearts();
+}
+
+function closeLetter(){
+document.getElementById("content").style.display="none";
+}
+
+function hearts(){
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},400);
+}
+</script>
+
+</body>
+</html>
